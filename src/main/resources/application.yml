@@ -1,0 +1,93 @@
+server:
+  port: 9001
+  tomcat:
+    uri-encoding: utf-8
+spring:
+  profiles:
+    active: dev
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  messages:
+    encoding: UTF-8
+
+pagehelper:
+  support-methods-arguments: true
+  reasonable: flase
+  params: count=countSql
+  row-bounds-with-count: true
+  helper-dialect: mysql
+
+
+---
+spring:
+  profiles: dev
+  jackson:
+    time-zone: GMT+8
+
+  #redis设置
+  redis:
+    host: 140.143.205.180
+    port: 6379
+    password: Jian208117
+
+  datasource:
+    url: jdbc:mysql://140.143.205.180:3306/edu?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Jian208117
+    druid:
+      initial-size: 8
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 300000
+      validation-query: select 'x' FROM DUAL
+      test-on-borrow: true
+      test-on-return: false
+      test-while-idle: true
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,wall
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #配置的缓存的全局开关
+    #cache-enabled: true
+    #延时加载的开关
+   # lazy-loading-enabled: true
+    #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
+    #multiple-result-sets-enabled: false
+  global-config:
+    banner: false
+    db-config:
+      id-type: uuid
+  type-aliases-package: com.log4j2.admin.entity
+  mapper-locations: classpath:/mapper/admin/*Mapper.xml
+---
+spring:
+  profiles: ora
+  datasource:
+    url: jdbc:oracle:thin:@192.168.65.129:1521:helowin
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: edu
+    password: admin
+    druid:
+      initial-size: 8
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 300000
+      validation-query: select 'x' FROM DUAL
+      test-on-borrow: true
+      test-on-return: false
+      test-while-idle: true
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,wall
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.log4j2.admin.mapper.SysUserMapper">
+    <!-- 批量停用 -->
+    <update id="updateStatusOff">
+       update sys_user set status="1" where user_id in
+        <foreach collection="array" item="idsStr" open="(" separator=","
+                 close=")">
+            #{idsStr}
+        </foreach>
+    </update>
+    <!--    批量启用-->
+    <update id="updateStatusOn">
+        update sys_user set status="0" where user_id in
+        <foreach collection="array" item="idsStr" open="(" separator=","
+                 close=")">
+            #{idsStr}
+        </foreach>
+    </update>
+    <!--    批量删除-->
+    <delete id="deleteList">
+        delete from sys_user where user_id in
+        <foreach collection="array" item="idsStr" open="(" separator=","
+                 close=")">
+            #{idsStr}
+        </foreach>
+    </delete>
+
+    <!--    获取全部用户-->
+    <select id="getUserList" resultType="com.log4j2.admin.entity.SysUser">
+         SELECT * FROM sys_user
+    </select>
+    <!--    获取用户总数-->
+    <select id="queryUserCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM sys_user
+    </select>
+
+</mapper>

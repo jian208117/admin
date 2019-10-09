@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>ok-admin v2.0 | 很赞的后台模版</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="keywords" content="ok-admin v2.0,ok-admin网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+        <meta name="description" content="ok-admin v2.0，顾名思义，很赞的后台模版，它是一款基于Layui框架的轻量级扁平化且完全免费开源的网站后台管理系统模板，适合中小型CMS后台系统。">
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="css/okadmin.css">
+    </head>
+    <body class="layui-layout-body">
+
+        <div class="layui-layout layui-layout-admin okadmin">
+            <!--头部导航-->
+            @include("common/_header.html"){}
+
+            <!--遮罩层-->
+            <div class="ok-make"></div>
+
+            <!--左侧导航区域-->
+            @include("common/_sidebar.html"){}
+
+            <!-- 内容主体区域 -->
+            @include("common/_body.html"){}
+
+            <!--底部信息-->
+            @include("common/_footer.html"){}
+        </div>
+
+        <div class="yy"></div>
+        <!--js逻辑-->
+        <script src="lib/layui/layui.js"></script>
+        <script src="js/okadmin.js"></script>
+    </body>
+</html>
