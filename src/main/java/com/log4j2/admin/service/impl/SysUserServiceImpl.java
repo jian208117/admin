@@ -30,7 +30,6 @@ class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements 
     //用户列表
     @Override
     public List<SysUser> getUserList() {
-
         return this.userMapper.getUserList();
     }
 
@@ -52,13 +51,16 @@ class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements 
         this.userMapper.updateStatusOff(idsStr);
     }
 
+    //批量启用
     @Override
     public void updateStatusOn(String[] idsStr) {
         this.userMapper.updateStatusOn(idsStr);
     }
 
-
-
+    @Override
+    public List<SysUser> selectUsers(String userName) {
+        return this.userMapper.selectUsers(userName);
+    }
 
 
 }

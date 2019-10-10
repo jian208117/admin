@@ -59,28 +59,28 @@ public class SysRoleController {
 
     /**
      * 角色更新
-     * @param roleId
+     * @param  id
      * @param sysRole
      * @return
      */
-    @RequestMapping(value = "/{roleId}",method = RequestMethod.PUT)
-    public R updateRole(@PathVariable String roleId,  SysRole sysRole){
+    @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
+    public R updateRole(@PathVariable String id,  SysRole sysRole){
         sysRole.setUpdateTime(new Date());
-        sysRole.setRoleId(roleId);
+        sysRole.setId(id);
         roleService.updateById(sysRole);
         return new R(RCode.SUCCESS);
     }
 
 
     /**
-     * 用户删除
-     * @param roleId
+     * 角色删除
+     * @param id
      * @return
      */
-    @RequestMapping(value = "/{userId}",method = RequestMethod.DELETE)
-    public R deleteRole(@PathVariable String roleId){
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    public R deleteRole(@PathVariable String id){
 
-        roleService.removeById(roleId);
+        roleService.removeById(id);
         return new R(RCode.SUCCESS);
     }
 

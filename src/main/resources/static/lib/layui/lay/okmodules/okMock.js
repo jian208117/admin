@@ -7,7 +7,7 @@ layui.define([], function(exprots) {
                 list: "https://easy-mock.com/mock/5d0ce725424f15399a6c2068/okadmin/menu/list"
             },
             user: {
-                list: "https://www.easy-mock.com/mock/5d5d0dd46cfcbd1b8627bf1d/ok-admin-v2.0/user/list",
+                list: "http://rap2api.taobao.org/app/mock/233041/user/list",
                 list2: "https://www.easy-mock.com/mock/5d5d0dd46cfcbd1b8627bf1d/ok-admin-v2.0/user/list2",
                 batchNormal: "https://www.easy-mock.com/mock/5d5d0dd46cfcbd1b8627bf1d/ok-admin-v2.0/user/batchNormal",
                 batchStop: "https://www.easy-mock.com/mock/5d5d0dd46cfcbd1b8627bf1d/ok-admin-v2.0/user/batchStop",

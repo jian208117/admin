@@ -26,5 +26,9 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
     //批量启用
     void updateStatusOn(String[] idsStr);
 
+    List<SysUser> selectUsers(String userName);
+
+
+
 
 }

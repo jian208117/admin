@@ -3,7 +3,7 @@
 <mapper namespace="com.log4j2.admin.mapper.SysUserMapper">
     <!-- 批量停用 -->
     <update id="updateStatusOff">
-       update sys_user set status="1" where user_id in
+       update sys_user set status="1" where id in
         <foreach collection="array" item="idsStr" open="(" separator=","
                  close=")">
             #{idsStr}
@@ -11,7 +11,7 @@
     </update>
     <!--    批量启用-->
     <update id="updateStatusOn">
-        update sys_user set status="0" where user_id in
+        update sys_user set status="0" where id in
         <foreach collection="array" item="idsStr" open="(" separator=","
                  close=")">
             #{idsStr}
@@ -19,7 +19,7 @@
     </update>
     <!--    批量删除-->
     <delete id="deleteList">
-        delete from sys_user where user_id in
+        delete from sys_user where id in
         <foreach collection="array" item="idsStr" open="(" separator=","
                  close=")">
             #{idsStr}
@@ -34,5 +34,16 @@
     <select id="queryUserCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM sys_user
     </select>
+    <select id="selectUsers" resultType="com.log4j2.admin.entity.SysUser">
+         SELECT * FROM sys_user
+         <where>
+             <if test="userName != null and userName  != ''">
+                 and user_name  like '%${userName}%'
+             </if>
+         </where>
+
+
+    </select>
+
 
 </mapper>

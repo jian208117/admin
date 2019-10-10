@@ -32,14 +32,16 @@ public class SysUser implements Serializable {
 
     private static final long serialVersionUID = 715502565301547499L;
     @ApiModelProperty(value = "id")
-    @TableId("user_id")
-    private String userId;
+    @TableId("id")
+    private String id;
 
     @ApiModelProperty(value = "用户名")
     private String userName;
 
     @ApiModelProperty(value = "头像")
     private String avatar;
+
+    private String password;
 
     @ApiModelProperty(value = "手机")
     private String phone;
@@ -65,5 +67,6 @@ public class SysUser implements Serializable {
     private Date updateTime;
 
 
+//    private List<SysRole> roles;
 
 }

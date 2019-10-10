@@ -40,6 +40,7 @@ public class SysUserController {
     @RequestMapping(value = "",method = RequestMethod.GET)
     public R userList(Integer page, Integer limit){
         PageHelper.startPage(page,limit);
+
         List<SysUser> userList = userService.getUserList();
         Integer count = userService.queryUserCount();
         return new R(RCode.SUCCESS,count,userList);
@@ -62,14 +63,14 @@ public class SysUserController {
 
     /**
      * 用户更新
-     * @param userId
+     * @param id
      * @param sysUser
      * @return
      */
-    @RequestMapping(value = "/{userId}",method = RequestMethod.PUT)
-    public R updateUser(@PathVariable String userId,  SysUser sysUser){
+    @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
+    public R updateUser(@PathVariable String id,  SysUser sysUser){
         sysUser.setUpdateTime(new Date());
-        sysUser.setUserId(userId);
+        sysUser.setId(id);
         userService.updateById(sysUser);
         return new R(RCode.SUCCESS);
     }
@@ -77,13 +78,13 @@ public class SysUserController {
 
     /**
      * 用户删除
-     * @param userId
+     * @param id
      * @return
      */
-    @RequestMapping(value = "/{userId}",method = RequestMethod.DELETE)
-    public R deleteUser(@PathVariable String userId){
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    public R deleteUser(@PathVariable String id){
 
-        userService.removeById(userId);
+        userService.removeById(id);
         return new R(RCode.SUCCESS);
     }
 
@@ -123,10 +124,17 @@ public class SysUserController {
         return new R(RCode.SUCCESS);
     }
 
+    @RequestMapping(value = "/selectUsers",method = RequestMethod.GET)
+    public R selectUsers(String userName){
 
-    /**
-     * 分配角色
-     */
+        List<SysUser> userList = userService.selectUsers(userName);
+
+        Integer count = userService.queryUserCount();
+        return new R(RCode.SUCCESS,count,userList);
+
+    }
+
+
 
 
 

@@ -86,7 +86,7 @@ layui.define(["layer"], function (exprots) {
                 if (rows > 0) {
                     var idsStr = "";
                     for (var i = 0; i < checkStatus.data.length; i++) {
-                        idsStr += checkStatus.data[i].userId + ",";
+                        idsStr += checkStatus.data[i].id + ",";
                     }
                     return idsStr;
                 } else {

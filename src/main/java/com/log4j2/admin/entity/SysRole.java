@@ -30,8 +30,8 @@ public class SysRole implements Serializable {
 
     private static final long serialVersionUID = -6983754483195306806L;
     @ApiModelProperty(value = "id")
-    @TableId("role_id")
-    private String roleId;
+    @TableId("id")
+    private String id;
 
     @ApiModelProperty(value = "角色名 ")
     private String roleName;

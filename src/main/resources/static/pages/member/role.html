@@ -49,7 +49,7 @@
 
         var roleTable = table.render({
             elem: "#tableId",
-            url: okMock.api.role.list,
+            url: '/role',
             limit: 10,
             page: true,
 			toolbar: "#toolbarTpl",
@@ -57,11 +57,12 @@
             cols: [[
                 {type: "checkbox"},
                 {field: "id", title: "ID", width: 80, sort: true},
-                {field: "name", title: "角色名", width: 100},
+                {field: "roleName", title: "角色名", width: 100},
                 {field: "remarks", title: "备注", width: 100},
-                {field: "createUser", title: "创建者", width: 85},
+               // {field: "createUser", title: "创建者", width: 85},
                 {field: "status", title: "状态", width: 85, templet: "#statusTpl"},
-                {field: "createTime", title: "创建时间", width: 150},
+                {field: 'createTime', title: '创建时间', width: 200, align: 'center'},
+                {field: 'updateTime', title: '更新时间', width: 200, align: 'center'},
                 {title: "操作", width: 200, align: "center", templet: "#operationTpl"}
             ]],
             done: function (res, curr, count) {

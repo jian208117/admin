@@ -68,6 +68,7 @@ mybatis-plus:
       id-type: uuid
   type-aliases-package: com.log4j2.admin.entity
   mapper-locations: classpath:/mapper/admin/*Mapper.xml
+
 ---
 spring:
   profiles: ora

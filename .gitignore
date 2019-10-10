@@ -3,7 +3,9 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
-
+.DS_Store
+.rebel.xml
+.renel-remote.xml
 ### STS ###
 .apt_generated
 .classpath

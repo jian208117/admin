@@ -58,7 +58,7 @@
             size: "sm",
             cols: [[
                 {type: "checkbox", fixed: "left"},
-                {field: 'userId', title: 'ID', width: 80, sort: true, align: 'center'},
+                {field: 'id', title: 'ID', width: 80, sort: true, align: 'center'},
                 {field: 'userName', title: '用户名', width: 100, align: 'center'},
                 {field: 'avatar', title: '头像', width: 100, templet: '<div><img style="height:35px;width:35px;border-radius:50%;line-height:50px!important;" src="{{ d.avatar}}"></div>', align: 'center'},
                 {field: 'phone', title: '手机', width: 150, align: 'center'},
@@ -76,6 +76,7 @@
         });
 
         form.on("submit(search)", function (data) {
+
             userTable.reload({
                 where: data.field,
                 page: {curr: 1}
@@ -107,7 +108,7 @@
                     edit(data);
                     break;
                 case "del":
-                    del(data.userId);
+                    del(data.id);
                     break;
             }
         });
@@ -173,9 +174,9 @@
             })
         }
 
-        function del(userId) {
+        function del(id) {
             okLayer.confirm("确定要删除吗？", function () {
-                okUtils.ajax('/user/'+userId, "delete", {idsStr: userId}).done(function (response) {
+                okUtils.ajax('/user/'+id, "delete", {idsStr: id}).done(function (response) {
                     console.log(response);
                     okUtils.table.successMsg("删除成功");
                 }).fail(function (error) {
