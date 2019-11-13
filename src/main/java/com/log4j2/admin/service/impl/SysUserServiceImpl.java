@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.log4j2.admin.common.result.R;
 import com.log4j2.admin.common.result.RCode;
 import com.log4j2.admin.common.utils.IPUtil;
-import com.log4j2.admin.entity.SysRole;
 import com.log4j2.admin.entity.SysUser;
 import com.log4j2.admin.mapper.SysRoleMapper;
 import com.log4j2.admin.mapper.SysUserMapper;
@@ -14,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * <p>
@@ -78,29 +75,14 @@ class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements 
         return new R(RCode.SUCCESS);
     }
 
-
-
-    /**
-     * 分配角色
-     */
     @Override
-    public void assignRoles(String userId, List<String> roleIds) {
-        //1.根据id查询用户
-        SysUser user = this.userMapper.findByUserId(userId);
-        //2.设置用户的角色集合
-        Set<SysRole> roles = new HashSet<>();
-        for (String roleId : roleIds) {
-            SysRole role = roleMapper.findByRoleId(roleId);
-            roles.add(role);
+    public void addRoleToUser(String userId, String[] roleIds) {
+
+        for(String roleId:roleIds){
+            userMapper.addRoleToUser(userId,roleId);
         }
-        //设置用户和角色集合的关系
-        user.setRoles(roles);
-        //3.更新用户
-        userMapper.insert(user);
+
     }
-
-
-
 
 
 }

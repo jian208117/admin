@@ -28,6 +28,8 @@ public interface ISysUserService extends IService<SysUser> {
     //增加用户
     R addUser(SysUser sysUser);
 
-    void assignRoles(String userId, List<String> roleIds);
+    void addRoleToUser(String userId, String[] roleIds);
+
+
 
 }

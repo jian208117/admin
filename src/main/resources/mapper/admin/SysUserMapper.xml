@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.log4j2.admin.mapper.SysUserMapper">
+    <insert id="addRoleToUser">
+        insert into sys_user_role (user_id, role_id) values(#{userId},#{roleId})
+    </insert>
     <!-- 批量停用 -->
     <update id="updateStatusOff">
        update sys_user set status="1" where id in
@@ -17,13 +20,13 @@
             #{idsStr}
         </foreach>
     </update>
-    <update id="assignRole">
-        insert into sys_user_role(user_id, role_id) values
-        <foreach item="item" collection="roles" separator=",">
-            (#{userId}, #{item})
-        </foreach>
-    </update>
-    <!--    设置角色-->
+<!--    <update id="assignRole">-->
+<!--        insert into sys_user_role(user_id, role_id) values-->
+<!--        <foreach item="item" collection="roles" separator=",">-->
+<!--            (#{userId}, #{item})-->
+<!--        </foreach>-->
+<!--    </update>-->
+
 
     <!--    批量删除-->
     <delete id="deleteList">
