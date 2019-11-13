@@ -33,7 +33,7 @@ public class SwaggerConf {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("api文档")
-                .description("简单优雅的restfun风格")
+                .description("简单优雅的restful风格")
                 .termsOfServiceUrl("http://208117.com")
                 .version("1.0")
                 .build();

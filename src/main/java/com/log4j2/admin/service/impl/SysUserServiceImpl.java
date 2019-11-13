@@ -1,14 +1,22 @@
 package com.log4j2.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.log4j2.admin.common.result.R;
+import com.log4j2.admin.common.result.RCode;
+import com.log4j2.admin.common.utils.IPUtil;
+import com.log4j2.admin.entity.SysRole;
 import com.log4j2.admin.entity.SysUser;
 import com.log4j2.admin.mapper.SysRoleMapper;
 import com.log4j2.admin.mapper.SysUserMapper;
 import com.log4j2.admin.service.ISysUserService;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -58,9 +66,41 @@ class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements 
     }
 
     @Override
-    public List<SysUser> selectUsers(String userName) {
-        return this.userMapper.selectUsers(userName);
+    public R addUser(SysUser sysUser) {
+        //创建更新时间
+        sysUser.setCreateTime(new Date());
+        String password = new Md5Hash("123456",sysUser.getUserName(),1024).toString();
+        //初始密码1234546
+        sysUser.setPassword(password);
+        sysUser.setAvatar("https://wx4.sinaimg.cn/mw1024/5db11ff4gy1fmx4keaw9pj20dw08caa4.jpg");
+        sysUser.setIp(IPUtil.getCityInfo("220.248.12.150"));
+        userMapper.insert(sysUser);
+        return new R(RCode.SUCCESS);
     }
+
+
+
+    /**
+     * 分配角色
+     */
+    @Override
+    public void assignRoles(String userId, List<String> roleIds) {
+        //1.根据id查询用户
+        SysUser user = this.userMapper.findByUserId(userId);
+        //2.设置用户的角色集合
+        Set<SysRole> roles = new HashSet<>();
+        for (String roleId : roleIds) {
+            SysRole role = roleMapper.findByRoleId(roleId);
+            roles.add(role);
+        }
+        //设置用户和角色集合的关系
+        user.setRoles(roles);
+        //3.更新用户
+        userMapper.insert(user);
+    }
+
+
+
 
 
 }

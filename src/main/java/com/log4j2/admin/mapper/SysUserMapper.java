@@ -2,6 +2,7 @@ package com.log4j2.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.log4j2.admin.entity.SysUser;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -25,8 +26,12 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
     void updateStatusOff(String[] idsStr);
     //批量启用
     void updateStatusOn(String[] idsStr);
-
-    List<SysUser> selectUsers(String userName);
+    //根据用户名查询用户
+    SysUser findByUserName(String userName);
+    //根据用户id查询用户
+    SysUser findByUserId(String userId);
+    //分配角色
+    int assignRole(@Param("userId") String userId, @Param("roles") String[] roles);
 
 
 

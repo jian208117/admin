@@ -1,6 +1,7 @@
 package com.log4j2.admin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.log4j2.admin.common.result.R;
 import com.log4j2.admin.entity.SysUser;
 
 import java.util.List;
@@ -24,7 +25,9 @@ public interface ISysUserService extends IService<SysUser> {
     void updateStatusOff(String[] idsStr);
     //批量启用
     void updateStatusOn(String[] idsStr);
+    //增加用户
+    R addUser(SysUser sysUser);
 
-   List<SysUser> selectUsers(String userName);
+    void assignRoles(String userId, List<String> roleIds);
 
 }

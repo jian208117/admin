@@ -1,8 +1,5 @@
 package com.log4j2.admin.common.result;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
  * @描述: 状态
  * @制作人: jian
@@ -12,24 +9,24 @@ import lombok.NoArgsConstructor;
 public enum  RCode {
 
 
-    SUCCESS(0,true,"操作成功！"),
-    FAIL(1001,false,"操作失败");
+    SUCCESS(0,0,"操作成功！"),
+    FAIL(1001,1,"操作失败");
 
 
     //操作代码
     int code;
     //操作是否成功
-    boolean status;
+    int status;
     //提示信息
     String msg;
 
-    RCode(int code,boolean status,String msg){
+    RCode(int code,int status,String msg){
         this.status = status;
         this.code = code;
         this.msg = msg;
     }
 
-    public boolean status(){
+    public int status(){
         return status;
     }
 

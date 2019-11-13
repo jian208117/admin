@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class R {
 
     private Integer code;
-    private boolean status;
+    private Integer status;
     private String msg;
     private Integer count;
     private Object data;
@@ -33,7 +33,7 @@ public class R {
         this.data = data;
     }
 
-    public R(Integer code,String msg,boolean status) {
+    public R(Integer code,String msg,Integer status) {
         this.code = code;
         this.msg = msg;
         this.status = status;
