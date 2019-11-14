@@ -84,5 +84,10 @@ class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements 
 
     }
 
+    @Override
+    public void resetByUserId(String password, String userId) {
+        this.userMapper.resetByUserId(password,userId);
+    }
+
 
 }

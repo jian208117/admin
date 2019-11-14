@@ -9,9 +9,13 @@ import com.log4j2.admin.service.ISysUserService;
 import com.log4j2.admin.shiro.ShiroRealm;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
@@ -163,6 +167,20 @@ public class SysUserController {
     public R assignRoles(String userId, String[] roleIds) {
 
         userService.addRoleToUser(userId, roleIds);
+        return new R(RCode.SUCCESS);
+    }
+
+    /**
+     * 重置当前用户密码为123456
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/resetPwd/{id}", method = RequestMethod.PUT)
+    public R resetPwd(@PathVariable String id) {
+        SysUser sysUser  = userService.getById(id);
+        String password = new Md5Hash("123456", sysUser.getUserName(), 1024).toString();
+        //初始密码1234546
+        userService.resetByUserId(password,id);
         return new R(RCode.SUCCESS);
     }
 

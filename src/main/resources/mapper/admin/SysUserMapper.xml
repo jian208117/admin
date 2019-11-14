@@ -20,7 +20,13 @@
             #{idsStr}
         </foreach>
     </update>
-<!--    <update id="assignRole">-->
+
+    <!--重置密码-->
+    <update id="resetByUserId">
+        update sys_user set password = #{password} where id = #{userId}
+
+    </update>
+    <!--    <update id="assignRole">-->
 <!--        insert into sys_user_role(user_id, role_id) values-->
 <!--        <foreach item="item" collection="roles" separator=",">-->
 <!--            (#{userId}, #{item})-->

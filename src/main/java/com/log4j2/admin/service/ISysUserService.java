@@ -29,7 +29,7 @@ public interface ISysUserService extends IService<SysUser> {
     R addUser(SysUser sysUser);
 
     void addRoleToUser(String userId, String[] roleIds);
-
+    void resetByUserId(String password,String userId);
 
 
 }

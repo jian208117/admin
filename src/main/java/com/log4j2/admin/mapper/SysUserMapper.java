@@ -31,9 +31,9 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
     //根据用户id查询用户
     SysUser findByUserId(String userId);
     //分配角色
-
     void addRoleToUser(@Param("userId") String userId, @Param("roleId") String roleId);
-
+    //重置密码
+    void resetByUserId(String password,String userId);
 
 
 

@@ -60,7 +60,7 @@
 				{field: 'sex', title: '性别', width: 85, align: 'center'},
 				{field: 'createTime', title: '创建时间', width: 200, align: 'center'},
 				//{field: 'updateTime', title: '更新时间', width: 200, align: 'center'},
-				{align: 'center', toolbar: '#tableBar', title: '操作', width: 200}
+				{align: 'center', toolbar: '#tableBar', title: '操作', width: 300}
 			]],
 			done: function (res, curr, count) {
 				console.info(res, curr, count);
@@ -100,6 +100,9 @@
 					break;
 				case "del":
 					del(data.id);
+					break;
+				case "reset":
+					reset(data.id);
 					break;
 			}
 		});
@@ -174,6 +177,19 @@
 				});
 			})
 		}
+
+		function reset(id) {
+			okLayer.confirm("是否重置密码为123456 ?", function () {
+				okUtils.ajax("/user/resetPwd/" + id, "put", {idsStr: id}, true).done(function (response) {
+					console.log(response);
+					okUtils.tableSuccessMsg(response.msg);
+				}).fail(function (error) {
+					console.log(error)
+				});
+			})
+		}
+
+
 	})
 </script>
 <!-- 头工具栏模板 -->
@@ -197,7 +213,9 @@
 
 	<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 
-	<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="roleAssign">分配角色</a>
+	<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="role">分配角色</a>
+
+	<a class="layui-btn layui-btn-xs" lay-event="reset">重置密码</a>
 
 </script>
 <!-- 启用|停用模板 -->
