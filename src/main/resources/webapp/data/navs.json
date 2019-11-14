@@ -28,7 +28,7 @@
     "children": [
       {
         "title": "用户列表",
-        "href": "/sys/adminList",
+        "href": "/sysUserList",
         "fontFamily": "layui-icon",
         "icon": "&#xe62e;",
         "spread": false

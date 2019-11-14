@@ -12,6 +12,13 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class IndexController {
+
+
+    /**
+     * 系统VIEW
+     * @param request
+     * @return
+     */
     @GetMapping("/login")
     public String loginController(HttpServletRequest request) {
         request.setAttribute("loginTitle", "Jian-Admin-登录");
@@ -29,16 +36,6 @@ public class IndexController {
         return "index";
     }
 
-
-    @GetMapping("/sys/adminList")
-    public String userListController() {
-        return "sys/user/user";
-    }
-    /**
-     * 跳转到无权限页面
-     *
-     * @return
-     */
     @GetMapping("/403")
     public String unauthorized() {
         return "403";
@@ -54,8 +51,23 @@ public class IndexController {
         return "500";
     }
 
-    @GetMapping("/sysUser")
-    public String sysUser() {
-        return "/pages/member/user";
+
+    /**
+     * 用户VIEW
+     */
+
+    @GetMapping("/sysUserList")
+    public String userListController() {
+        return "sys/user/user";
+    }
+
+    @GetMapping("/sysUserAdd")
+    public String sysUserAdd() {
+        return "sys/user/user-add";
+    }
+
+    @GetMapping("/sysUserEdit")
+    public String sysUserEdit() {
+        return "sys/user/user-edit";
     }
 }

@@ -16,25 +16,67 @@ import java.util.List;
  */
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
-    //分页
+    /**
+     * 分页
+     *
+     * @return
+     */
     List<SysUser> getUserList();
-    //统计
+
+    /**
+     * 统计
+     *
+     * @return
+     */
     Integer queryUserCount();
-    //批量删除
+
+    /**
+     * 批量删除
+     *
+     * @param idsStr
+     */
     void deleteList(String[] idsStr);
-    //批量停用
+
+    /**
+     * 批量停用
+     *
+     * @param idsStr
+     */
     void updateStatusOff(String[] idsStr);
-    //批量启用
+
+    /**
+     * 批量启用
+     *
+     * @param idsStr
+     */
     void updateStatusOn(String[] idsStr);
-    //根据用户名查询用户
+
+    /**
+     * 根据用户名查询用户
+     *
+     * @param userName
+     * @return
+     */
     SysUser findByUserName(String userName);
-    //根据用户id查询用户
+
+    /**
+     * 根据用户id查询用户
+     *
+     * @param userId
+     * @return
+     */
     SysUser findByUserId(String userId);
+
     //分配角色
     void addRoleToUser(@Param("userId") String userId, @Param("roleId") String roleId);
-    //重置密码
-    void resetByUserId(String password,String userId);
 
+    /**
+     * 重置密码
+     *
+     * @param password
+     * @param userId
+     */
+    void resetByUserId(String password, String userId);
 
 
 }

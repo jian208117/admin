@@ -4,14 +4,16 @@
     <insert id="addRoleToUser">
         insert into sys_user_role (user_id, role_id) values(#{userId},#{roleId})
     </insert>
+
     <!-- 批量停用 -->
     <update id="updateStatusOff">
-       update sys_user set status="1" where id in
+        update sys_user set status="1" where id in
         <foreach collection="array" item="idsStr" open="(" separator=","
                  close=")">
             #{idsStr}
         </foreach>
     </update>
+
     <!--    批量启用-->
     <update id="updateStatusOn">
         update sys_user set status="0" where id in
@@ -27,11 +29,11 @@
 
     </update>
     <!--    <update id="assignRole">-->
-<!--        insert into sys_user_role(user_id, role_id) values-->
-<!--        <foreach item="item" collection="roles" separator=",">-->
-<!--            (#{userId}, #{item})-->
-<!--        </foreach>-->
-<!--    </update>-->
+    <!--        insert into sys_user_role(user_id, role_id) values-->
+    <!--        <foreach item="item" collection="roles" separator=",">-->
+    <!--            (#{userId}, #{item})-->
+    <!--        </foreach>-->
+    <!--    </update>-->
 
 
     <!--    批量删除-->
@@ -47,14 +49,18 @@
     <select id="getUserList" resultType="com.log4j2.admin.entity.SysUser">
          SELECT * FROM sys_user
     </select>
+
     <!--    获取用户总数-->
     <select id="queryUserCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM sys_user
     </select>
+
     <!--    根据用户名查询-->
     <select id="findByUserName" resultType="com.log4j2.admin.entity.SysUser">
         SELECT * FROM sys_user WHERE  user_name = #{userName}
     </select>
+
+    <!--    根据用户id查询-->
     <select id="findByUserId" resultType="com.log4j2.admin.entity.SysUser">
         SELECT * FROM sys_user WHERE  id = #{userId}
     </select>

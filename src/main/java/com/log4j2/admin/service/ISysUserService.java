@@ -15,21 +15,58 @@ import java.util.List;
  * @since 2019-08-09
  */
 public interface ISysUserService extends IService<SysUser> {
-    //用户列表
+    /**
+     * 用户列表
+     *
+     * @return
+     */
     List<SysUser> getUserList();
-    //用户总数
+
+    /**
+     * 用户总数
+     *
+     * @return
+     */
     Integer queryUserCount();
-    //批量删除
+
+    /**
+     * 批量删除
+     *
+     * @param idsStr
+     */
     void deleteList(String[] idsStr);
-    //批量停用
+
+    /**
+     * 批量停用
+     *
+     * @param idsStr
+     */
     void updateStatusOff(String[] idsStr);
-    //批量启用
+
+    /**
+     * 批量启用
+     *
+     * @param idsStr
+     */
     void updateStatusOn(String[] idsStr);
-    //增加用户
+
+    /**
+     * 增加用户
+     *
+     * @param sysUser
+     * @return
+     */
     R addUser(SysUser sysUser);
 
     void addRoleToUser(String userId, String[] roleIds);
-    void resetByUserId(String password,String userId);
+
+    /**
+     * 重置密码
+     *
+     * @param password
+     * @param userId
+     */
+    void resetByUserId(String password, String userId);
 
 
 }

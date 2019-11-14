@@ -81,6 +81,8 @@ public class SysUserController {
     public R updateUser(@PathVariable String id, SysUser sysUser) {
         sysUser.setUpdateTime(new Date());
         sysUser.setId(id);
+        String password = new Md5Hash(sysUser.getPassword(), sysUser.getUserName(), 1024).toString();
+        sysUser.setPassword(password);
         userService.updateById(sysUser);
         //添加成功之后 清除缓存
         DefaultWebSecurityManager securityManager = (DefaultWebSecurityManager) SecurityUtils.getSecurityManager();
@@ -172,15 +174,16 @@ public class SysUserController {
 
     /**
      * 重置当前用户密码为123456
+     *
      * @param id
      * @return
      */
     @RequestMapping(value = "/resetPwd/{id}", method = RequestMethod.PUT)
     public R resetPwd(@PathVariable String id) {
-        SysUser sysUser  = userService.getById(id);
+        SysUser sysUser = userService.getById(id);
         String password = new Md5Hash("123456", sysUser.getUserName(), 1024).toString();
         //初始密码1234546
-        userService.resetByUserId(password,id);
+        userService.resetByUserId(password, id);
         return new R(RCode.SUCCESS);
     }
 
