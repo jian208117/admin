@@ -16,12 +16,51 @@ import java.util.Set;
  */
 public interface SysRoleMapper extends BaseMapper<SysRole> {
 
-    //分页
+    /**
+     * 分页
+     * @return
+     */
     List<SysRole> getRoleList();
-    //统计
+
+    /**
+     * 统计
+     * @return
+     */
     Integer queryRoleCount();
-    //根据用户id查询角色
+
+    /**
+     * 根据用户id查询角色
+     * @param userId
+     * @return
+     */
     Set<SysRole> findRolesByUserId(String userId);
-    //根据角色id查询角色
+
+    /**
+     * 根据角色id查询角色
+     * @param roleId
+     * @return
+     */
     SysRole findByRoleId(String roleId);
+
+    /**
+     * 批量删除
+     *
+     * @param idsStr
+     */
+    void deleteList(String[] idsStr);
+
+    /**
+     * 批量停用
+     *
+     * @param idsStr
+     */
+    void updateStatusOff(String[] idsStr);
+
+    /**
+     * 批量启用
+     *
+     * @param idsStr
+     */
+    void updateStatusOn(String[] idsStr);
+
 }

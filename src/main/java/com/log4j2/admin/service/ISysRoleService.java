@@ -14,9 +14,37 @@ import java.util.List;
  * @since 2019-09-02
  */
 public interface ISysRoleService extends IService<SysRole> {
-    //角色列表
+    /**
+     * 角色列表
+     * @return
+     */
     List<SysRole> getRoleList();
-    //用户总数
+
+    /**
+     * 角色总数
+     * @return
+     */
     Integer queryRoleCount();
+
+    /**
+     * 批量删除
+     *
+     * @param idsStr
+     */
+    void deleteList(String[] idsStr);
+
+    /**
+     * 批量停用
+     *
+     * @param idsStr
+     */
+    void updateStatusOff(String[] idsStr);
+
+    /**
+     * 批量启用
+     *
+     * @param idsStr
+     */
+    void updateStatusOn(String[] idsStr);
 
 }

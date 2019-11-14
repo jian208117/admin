@@ -70,4 +70,23 @@ public class IndexController {
     public String sysUserEdit() {
         return "sys/user/user-edit";
     }
+
+    /**
+     * 角色VIEW
+     */
+
+    @GetMapping("/sysRoleList")
+    public String roleListController() {
+        return "sys/role/role";
+    }
+
+    @GetMapping("/sysRoleAdd")
+    public String sysRoleAdd() {
+        return "sys/role/role-add";
+    }
+
+    @GetMapping("/sysRoleEdit")
+    public String sysRoleEdit() {
+        return "sys/role/role-edit";
+    }
 }

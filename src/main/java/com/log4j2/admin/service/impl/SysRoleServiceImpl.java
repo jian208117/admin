@@ -24,13 +24,48 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     @Autowired
     private SysRoleMapper roleMapper;
 
+    /**
+     * 角色列表
+     * @return
+     */
     @Override
     public List<SysRole> getRoleList() {
         return this.roleMapper.getRoleList();
     }
 
+    /**
+     * 角色总数
+     * @return
+     */
     @Override
     public Integer queryRoleCount() {
         return this.roleMapper.queryRoleCount();
+    }
+
+    /**
+     * 批量删除
+     * @param idsStr
+     */
+    @Override
+    public void deleteList(String[] idsStr) {
+        this.roleMapper.deleteList(idsStr);
+    }
+
+    /**
+     * 批量停用
+     * @param idsStr
+     */
+    @Override
+    public void updateStatusOff(String[] idsStr) {
+        this.roleMapper.updateStatusOff(idsStr);
+    }
+
+    /**
+     * 批量启用
+     * @param idsStr
+     */
+    @Override
+    public void updateStatusOn(String[] idsStr) {
+        this.roleMapper.updateStatusOn(idsStr);
     }
 }

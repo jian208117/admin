@@ -35,7 +35,7 @@
       },
       {
         "title": "角色列表",
-        "href": "pages/member/role.html",
+        "href": "/sysRoleList",
         "icon": "&#xe62e;",
         "spread": false
       },

@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.log4j2.admin.mapper.SysRoleMapper">
+    <!--    批量启用-->
+    <update id="updateStatusOn">
+        update sys_role set status="0" where id in
+        <foreach collection="array" item="idsStr" open="(" separator=","
+                 close=")">
+            #{idsStr}
+        </foreach>
+    </update>
+    <!--    批量停用-->
+    <update id="updateStatusOff">
+        update sys_role set status="1" where id in
+        <foreach collection="array" item="idsStr" open="(" separator=","
+                 close=")">
+            #{idsStr}
+        </foreach>
+    </update>
+    <!--    批量删除-->
+    <delete id="deleteList">
+        delete from sys_role where id in
+        <foreach collection="array" item="idsStr" open="(" separator=","
+                 close=")">
+            #{idsStr}
+        </foreach>
+    </delete>
     <!--    获取全部角色-->
     <select id="getRoleList" resultType="com.log4j2.admin.entity.SysRole">
          SELECT * FROM sys_role
@@ -15,6 +39,7 @@
         LEFT JOIN sys_user_role ur
         on r.id = ur.role_id where ur.user_id  = #{userId}
     </select>
+    <!--    根据角色id查询角色-->
     <select id="findByRoleId" resultType="com.log4j2.admin.entity.SysRole">
         SELECT * FROM sys_role WHERE  id = #{roleId}
     </select>
