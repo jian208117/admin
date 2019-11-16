@@ -27,6 +27,8 @@ pagehelper:
 ---
 spring:
   profiles: dev
+  aop:
+    auto: true
   jackson:
     time-zone: GMT+8
   #mvc:

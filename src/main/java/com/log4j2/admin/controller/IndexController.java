@@ -89,4 +89,12 @@ public class IndexController {
     public String sysRoleEdit() {
         return "sys/role/role-edit";
     }
+
+    /**
+     * 日志VIES
+     */
+    @GetMapping("/sysLogList")
+    public String syLogList() {
+        return "sys/log/log";
+    }
 }

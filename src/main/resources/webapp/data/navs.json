@@ -184,7 +184,7 @@
       },
       {
         "title": "日志列表",
-        "href": "pages/system/log.html",
+        "href": "/sysLogList",
         "icon": "&#xe62e;",
         "spread": false
       },

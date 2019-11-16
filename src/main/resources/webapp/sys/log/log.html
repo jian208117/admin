@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>日志列表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="${ctxPath}/css/oksub.css">
+	<script type="text/javascript" src="${ctxPath}/lib/loading/okLoading.js"></script>
+</head>
+<body>
+<div class="ok-body">
+	<!--模糊搜索区域-->
+
+	<!--数据表格-->
+	<table class="layui-hide" id="tableId" lay-filter="tableFilter"></table>
+</div>
+
+<!--js逻辑-->
+<script src="${ctxPath}/lib/layui/layui.js"></script>
+<script>
+	layui.use(["element", "jquery", "table", "form", "laydate", "okLayer", "okUtils", "okMock"], function () {
+		let table = layui.table;
+		let form = layui.form;
+		let laydate = layui.laydate;
+		let okLayer = layui.okLayer;
+		let okUtils = layui.okUtils;
+		let okMock = layui.okMock;
+		let $ = layui.jquery;
+
+		laydate.render({elem: "#startTime", type: "datetime"});
+		laydate.render({elem: "#endTime", type: "datetime"});
+		okLoading.close($);
+		let userTable = table.render({
+			elem: '#tableId',
+			url: '/log',
+			limit: 20,
+			page: true,
+			toolbar: true,
+			toolbar: "#toolbarTpl",
+			size: "sm",
+			cols: [[
+				{field: 'id', title: 'ID', width: 80, sort: true, align: 'center'},
+				{field: 'username', title: '登录用户', width: 100, align: 'center'},
+				{field: 'operation', title: '用户操作', width: 200, align: 'center'},
+				{field: 'method', title: '请求方法', width: 350, align: 'center'},
+				{field: 'params', title: '请求参数', width: 200, align: 'center'},
+				{field: 'time', title: '执行时长(毫秒)', width: 100, align: 'center'},
+				{field: 'ip', title: 'IP地址', width: 150, align: 'center'},
+				{field: 'createDate', title: '创建时间', width: 200, align: 'center'}
+
+			]],
+			done: function (res, curr, count) {
+				console.info(res, curr, count);
+			}
+		});
+
+
+
+
+
+
+
+
+
+
+	})
+</script>
+
+
+</body>
+</html>

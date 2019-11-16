@@ -3,7 +3,6 @@ package com.log4j2.admin.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.log4j2.admin.common.result.R;
 import com.log4j2.admin.common.result.RCode;
-import com.log4j2.admin.common.utils.IPUtil;
 import com.log4j2.admin.entity.SysUser;
 import com.log4j2.admin.mapper.SysRoleMapper;
 import com.log4j2.admin.mapper.SysUserMapper;
@@ -95,7 +94,7 @@ class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements 
         String password = new Md5Hash(sysUser.getPassword(), sysUser.getUserName(), 1024).toString();
         sysUser.setPassword(password);
         sysUser.setAvatar("https://wx4.sinaimg.cn/mw1024/5db11ff4gy1fmx4keaw9pj20dw08caa4.jpg");
-        sysUser.setIp(IPUtil.getCityInfo("220.248.12.150"));
+        //sysUser.setIp(IPUtil.getCityInfo("220.248.12.150"));
         userMapper.insert(sysUser);
         return new R(RCode.SUCCESS);
     }

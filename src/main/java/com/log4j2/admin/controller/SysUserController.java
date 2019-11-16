@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.log4j2.admin.common.result.R;
 import com.log4j2.admin.common.result.RCode;
 import com.log4j2.admin.entity.SysUser;
+import com.log4j2.admin.log.SysLog;
 import com.log4j2.admin.service.ISysUserService;
 import com.log4j2.admin.shiro.ShiroRealm;
 import org.apache.shiro.SecurityUtils;
@@ -43,6 +44,7 @@ public class SysUserController {
      * @param limit
      * @return
      */
+    @SysLog("获取用户分页")
     @RequiresPermissions("user:list")
     @RequestMapping(value = "", method = RequestMethod.GET)
     public R userList(Integer page, Integer limit) {
@@ -59,6 +61,7 @@ public class SysUserController {
      * @param sysUser
      * @return
      */
+    @SysLog("增加用户")
     @RequestMapping(value = "", method = RequestMethod.POST)
     public R addUser(SysUser sysUser) {
         userService.addUser(sysUser);
@@ -77,6 +80,7 @@ public class SysUserController {
      * @param sysUser
      * @return
      */
+    @SysLog("更新用户")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public R updateUser(@PathVariable String id, SysUser sysUser) {
         sysUser.setUpdateTime(new Date());
@@ -99,6 +103,7 @@ public class SysUserController {
      * @param id
      * @return
      */
+    @SysLog("删除用户")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public R deleteUser(@PathVariable String id) {
 
@@ -117,6 +122,7 @@ public class SysUserController {
      * @param idsStr
      * @return
      */
+    @SysLog("批量删除用户")
     @RequestMapping(value = "/deleteIds", method = RequestMethod.DELETE)
     public R deleteUserIds(String[] idsStr) {
 
@@ -135,6 +141,7 @@ public class SysUserController {
      * @param idsStr
      * @return
      */
+    @SysLog("批量停用用户")
     @RequestMapping(value = "/updateIdsOff", method = RequestMethod.PUT)
     public R updateIdsOff(String[] idsStr) {
 
@@ -153,6 +160,7 @@ public class SysUserController {
      * @param idsStr
      * @return
      */
+    @SysLog("批量启用用户")
     @RequestMapping(value = "/updateIdsOn", method = RequestMethod.PUT)
     public R updateIdsOn(String[] idsStr) {
 
@@ -178,6 +186,7 @@ public class SysUserController {
      * @param id
      * @return
      */
+    @SysLog("重置用户密码")
     @RequestMapping(value = "/resetPwd/{id}", method = RequestMethod.PUT)
     public R resetPwd(@PathVariable String id) {
         SysUser sysUser = userService.getById(id);

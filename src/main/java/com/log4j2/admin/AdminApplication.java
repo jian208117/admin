@@ -2,7 +2,11 @@ package com.log4j2.admin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.Configuration;
 
+@ServletComponentScan  //注册过滤器注解
+@Configuration
 @SpringBootApplication
 public class AdminApplication {
 

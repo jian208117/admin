@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.log4j2.admin.common.result.R;
 import com.log4j2.admin.common.result.RCode;
 import com.log4j2.admin.entity.SysRole;
+import com.log4j2.admin.log.SysLog;
 import com.log4j2.admin.service.ISysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +38,7 @@ public class SysRoleController {
      * @param limit
      * @return
      */
+    @SysLog("获取角色分页")
     @RequestMapping(value = "", method = RequestMethod.GET)
     public R roleList(Integer page, Integer limit) {
         PageHelper.startPage(page, limit);
@@ -51,6 +53,7 @@ public class SysRoleController {
      * @param sysRole
      * @return
      */
+    @SysLog("增加角色")
     @RequestMapping(value = "", method = RequestMethod.POST)
     public R addRole(SysRole sysRole) {
         sysRole.setCreateTime(new Date());
@@ -66,6 +69,7 @@ public class SysRoleController {
      * @param sysRole
      * @return
      */
+    @SysLog("更新角色")
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public R updateRole(@PathVariable String id, SysRole sysRole) {
         sysRole.setUpdateTime(new Date());
@@ -81,6 +85,7 @@ public class SysRoleController {
      * @param id
      * @return
      */
+    @SysLog("删除角色")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public R deleteRole(@PathVariable String id) {
         roleService.removeById(id);
@@ -94,6 +99,7 @@ public class SysRoleController {
      * @param idsStr
      * @return
      */
+    @SysLog("批量删除角色")
     @RequestMapping(value = "/deleteIds", method = RequestMethod.DELETE)
     public R deleteRoleIds(String[] idsStr) {
         roleService.deleteList(idsStr);
@@ -106,6 +112,7 @@ public class SysRoleController {
      * @param idsStr
      * @return
      */
+    @SysLog("批量停用角色")
     @RequestMapping(value = "/updateIdsOff", method = RequestMethod.PUT)
     public R updateIdsOff(String[] idsStr) {
         roleService.updateStatusOff(idsStr);
@@ -118,6 +125,7 @@ public class SysRoleController {
      * @param idsStr
      * @return
      */
+    @SysLog("批量启用角色")
     @RequestMapping(value = "/updateIdsOn", method = RequestMethod.PUT)
     public R updateIdsOn(String[] idsStr) {
         roleService.updateStatusOn(idsStr);

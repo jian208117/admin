@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.log4j2.admin.mapper.SysLogMapper">
+
+    <!--    获取全部日志-->
+    <select id="getLogList" resultType="com.log4j2.admin.entity.SysLog">
+        SELECT * FROM sys_log
+    </select>
+
+    <!--    全部日志数-->
+    <select id="queryLogCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM sys_log
+    </select>
+</mapper>
