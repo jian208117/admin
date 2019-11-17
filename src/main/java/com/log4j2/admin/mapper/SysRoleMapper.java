@@ -23,6 +23,10 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
     List<SysRole> getRoleList();
 
     /**
+     * 角色状态正常的分页
+     */
+    List<SysRole> getRoleStausList();
+    /**
      * 统计
      * @return
      */

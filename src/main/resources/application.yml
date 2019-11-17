@@ -31,8 +31,6 @@ spring:
     auto: true
   jackson:
     time-zone: GMT+8
-  #mvc:
-#    static-path-pattern: /webapp/**
   resources:
     #静态页面所在目录
     static-locations: classpath:/webapp/
@@ -65,12 +63,6 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    #配置的缓存的全局开关
-    #cache-enabled: true
-    #延时加载的开关
-   # lazy-loading-enabled: true
-    #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
-    #multiple-result-sets-enabled: false
   global-config:
     banner: false
     db-config:

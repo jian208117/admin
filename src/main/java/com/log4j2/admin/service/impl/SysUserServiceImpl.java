@@ -89,12 +89,16 @@ class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements 
      */
     @Override
     public R addUser(SysUser sysUser) {
+
+        SysUser sysUser1 = userMapper.findByUserName(sysUser.getUserName());
+        if(null != sysUser1){
+            return new R (RCode.FAIL);
+        }
         //创建更新时间
         sysUser.setCreateTime(new Date());
         String password = new Md5Hash(sysUser.getPassword(), sysUser.getUserName(), 1024).toString();
         sysUser.setPassword(password);
         sysUser.setAvatar("https://wx4.sinaimg.cn/mw1024/5db11ff4gy1fmx4keaw9pj20dw08caa4.jpg");
-        //sysUser.setIp(IPUtil.getCityInfo("220.248.12.150"));
         userMapper.insert(sysUser);
         return new R(RCode.SUCCESS);
     }
@@ -117,6 +121,16 @@ class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements 
     @Override
     public void resetByUserId(String password, String userId) {
         this.userMapper.resetByUserId(password, userId);
+    }
+
+    /**
+     * 根据用户id查询用户
+     * @param userId
+     * @return
+     */
+    @Override
+    public SysUser findByUserId(String userId) {
+        return this.userMapper.findByUserId(userId);
     }
 
 

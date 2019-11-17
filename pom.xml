@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.8.RELEASE</version>
+        <version>2.2.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -16,7 +16,7 @@
     <name>admin</name>
     <description>后台管理系统</description>
 
-    <!--    统一版本-->
+    <!--    统一版本    -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -27,7 +27,7 @@
         <lombok.version>1.18.8</lombok.version>
         <fastjson.version>1.2.58</fastjson.version>
         <swagger.version>2.9.2</swagger.version>
-        <beetl.version>1.2.14.RELEASE</beetl.version>
+        <beetl.version>3.0.13.RELEASE</beetl.version>
         <project.version>1.0.0</project.version>
         <hutool.version>4.5.18</hutool.version>
         <freemarker.version>2.3.28</freemarker.version>
@@ -43,12 +43,8 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
-        <!--shiro-->
+
+        <!--    shiro   -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
@@ -89,13 +85,20 @@
             </exclusions>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.upyun</groupId>
             <artifactId>java-sdk</artifactId>
             <version>${uppai.version}</version>
         </dependency>
 
-        <!--		springboot依赖-->
+        <!--		springboot依赖    -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -115,23 +118,19 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <!--监控sql日志-->
+        <!--    监控sql日志      -->
         <dependency>
             <groupId>org.bgee.log4jdbc-log4j2</groupId>
             <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
             <version>${log4jdbc.version}</version>
         </dependency>
-        <!--		工具类-->
+        <!--		工具类 -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
         </dependency>
-        <!--		数据库-->
+        <!--		druid-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
@@ -147,6 +146,12 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
             <version>${mybatisplus.version}</version>
+        </dependency>
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.freemarker</groupId>
@@ -184,22 +189,21 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- beetl -->
         <dependency>
             <groupId>com.ibeetl</groupId>
             <artifactId>beetl</artifactId>
-            <version>3.0.10.RELEASE</version>
+            <version>${beetl.version}</version>
         </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
-        </dependency>
+
+        <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -242,11 +246,6 @@
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>${swaggerBootstrap.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.ibeetl</groupId>-->
-<!--            <artifactId>beetl-framework-starter</artifactId>-->
-<!--            <version>${beetl.version}</version>-->
-<!--        </dependency>-->
     </dependencies>
 
     <build>

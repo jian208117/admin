@@ -68,5 +68,12 @@ public interface ISysUserService extends IService<SysUser> {
      */
     void resetByUserId(String password, String userId);
 
+    /**
+     * 根据id查询用户
+     * @param userId
+     * @return
+     */
+    SysUser findByUserId(String userId);
+
 
 }

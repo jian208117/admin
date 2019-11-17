@@ -43,4 +43,7 @@
     <select id="findByRoleId" resultType="com.log4j2.admin.entity.SysRole">
         SELECT * FROM sys_role WHERE  id = #{roleId}
     </select>
+    <select id="getRoleStausList" resultType="com.log4j2.admin.entity.SysRole">
+        SELECT * FROM sys_role WHERE  status = 0
+    </select>
 </mapper>

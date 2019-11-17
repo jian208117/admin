@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.log4j2.admin.common.result.R;
 import com.log4j2.admin.common.result.RCode;
 import com.log4j2.admin.entity.SysUser;
+import com.log4j2.admin.entity.SysUserRole;
 import com.log4j2.admin.log.SysLog;
 import com.log4j2.admin.service.ISysUserService;
 import com.log4j2.admin.shiro.ShiroRealm;
@@ -35,6 +36,7 @@ public class SysUserController {
 
     @Autowired
     private ISysUserService userService;
+
 
 
     /**
@@ -173,10 +175,18 @@ public class SysUserController {
         return new R(RCode.SUCCESS);
     }
 
+    /**
+     * 为当前用户增加角色
+     * @param id
+     * @param idsStr
+     * @return
+     */
     @RequestMapping(value = "/assignRoles", method = RequestMethod.POST)
-    public R assignRoles(String userId, String[] roleIds) {
+    public R assignRoles( String id, String[] idsStr) {
 
-        userService.addRoleToUser(userId, roleIds);
+        SysUserRole sysUserRole = new SysUserRole();
+        sysUserRole.setCreateTime(new Date());
+        userService.addRoleToUser(id, idsStr);
         return new R(RCode.SUCCESS);
     }
 

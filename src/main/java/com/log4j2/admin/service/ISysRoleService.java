@@ -21,6 +21,12 @@ public interface ISysRoleService extends IService<SysRole> {
     List<SysRole> getRoleList();
 
     /**
+     * 角色状态正常列表
+     * @return
+     */
+
+    List<SysRole> getRoleStausList();
+    /**
      * 角色总数
      * @return
      */

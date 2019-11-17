@@ -34,6 +34,15 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     }
 
     /**
+     * 角色状态正常列表
+     * @return
+     */
+    @Override
+    public List<SysRole> getRoleStausList() {
+        return this.roleMapper.getRoleStausList();
+    }
+
+    /**
      * 角色总数
      * @return
      */

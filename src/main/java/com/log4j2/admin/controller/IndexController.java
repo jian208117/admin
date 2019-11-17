@@ -1,9 +1,15 @@
 package com.log4j2.admin.controller;
 
+import com.log4j2.admin.entity.SysRole;
+import com.log4j2.admin.service.ISysRoleService;
+import com.log4j2.admin.service.ISysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @描述: main
@@ -13,6 +19,11 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class IndexController {
 
+    @Autowired
+    private ISysUserService userService;
+
+    @Autowired
+    private ISysRoleService roleService;
 
     /**
      * 系统VIEW
@@ -62,7 +73,7 @@ public class IndexController {
     }
 
     @GetMapping("/sysUserAdd")
-    public String sysUserAdd() {
+    public String sysUserAdd(HttpServletRequest request) {
         return "sys/user/user-add";
     }
 
@@ -71,12 +82,20 @@ public class IndexController {
         return "sys/user/user-edit";
     }
 
+    @GetMapping("/sysUserAddRole")
+    public String sysUserAddRole(HttpServletRequest request,@RequestParam String userId) {
+        List<SysRole> roleList = this.roleService.getRoleStausList();
+        request.setAttribute("roleList", roleList);
+        return "sys/user/userAddRole";
+    }
+
     /**
      * 角色VIEW
      */
 
     @GetMapping("/sysRoleList")
-    public String roleListController() {
+    public String sysRoleList() throws Exception {
+
         return "sys/role/role";
     }
 
